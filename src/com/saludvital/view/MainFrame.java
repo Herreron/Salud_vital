@@ -1,5 +1,6 @@
 package com.saludvital.view;
 
+import com.saludvital.util.ResourceManager;
 import com.saludvital.view.panels.LoginPanel;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -10,6 +11,8 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -44,9 +47,13 @@ public class MainFrame extends JFrame {
         setUndecorated(true);
 
         // Barra superior: izquierda reservada para el mini logo, derecha para salir
+
+        topBar.setLayout(new BorderLayout());
+        JLabel miniLogo = new JLabel(ResourceManager.loadIcon("logo.png", -1, 24));
+        miniLogo.setBorder(BorderFactory.createEmptyBorder(0, 12, 0, 0));
+        topBar.add(miniLogo, BorderLayout.WEST);
         topBar.setBackground(Color.BLACK);
         topBar.setPreferredSize(new Dimension(800, 36));
-        topBar.setLayout(new BorderLayout());
 
         JPanel rightControls = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 4));
         rightControls.setOpaque(false);

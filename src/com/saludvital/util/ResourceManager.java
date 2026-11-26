@@ -32,25 +32,44 @@ public class ResourceManager {
     }
 
     private static Font loadFont(String fileName, float size) {
-        try (InputStream stream = ResourceManager.class.getResourceAsStream(FONTS_PATH + fileName)) {
+        String path = FONTS_PATH + fileName;
+        try (InputStream stream = ResourceManager.class.getResourceAsStream(path)) {
             if (stream == null) {
+                System.err.println("[ResourceManager] Fuente no encontrada en classpath: " + path);
                 return null;
             }
             Font baseFont = Font.createFont(Font.TRUETYPE_FONT, stream);
             return baseFont.deriveFont(size);
         } catch (FontFormatException | IOException e) {
+            System.err.println("[ResourceManager] Error al cargar fuente " + path + ": " + e.getMessage());
             return null;
         }
     }
 
     // Pasa -1 en width o height si deseas mantener la proporcion original
     public static ImageIcon loadIcon(String fileName, int width, int height) {
-        URL resourceUrl = ResourceManager.class.getResource(ICONS_PATH + fileName);
+        String path = ICONS_PATH + fileName;
+        URL resourceUrl = ResourceManager.class.getResource(path);
         if (resourceUrl == null) {
+            System.err.println("[ResourceManager] Icono no encontrado en classpath: " + path);
             return null;
         }
         ImageIcon originalIcon = new ImageIcon(resourceUrl);
         Image scaledImage = originalIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
         return new ImageIcon(scaledImage);
     }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
 }
