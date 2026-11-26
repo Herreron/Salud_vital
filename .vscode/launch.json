@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Salud Vital (Maven Wrapper)",
+            "request": "launch",
+            "mainClass": "com.saludvital.App",
+            "projectName": "salud-vital",
+            "preLaunchTask": "Maven Wrapper: compile Salud Vital"
+        }
+    ]
+}

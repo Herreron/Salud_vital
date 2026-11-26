@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Maven Wrapper: compile Salud Vital",
+            "type": "shell",
+            "command": "${workspaceFolder}/mvnw",
+            "windows": {
+                "command": "${workspaceFolder}\\mvnw.cmd"
+            },
+            "args": [
+                "clean",
+                "compile"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
